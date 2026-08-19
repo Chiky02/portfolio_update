@@ -1,6 +1,6 @@
 # Portafolio Juan Ballen
 
-Sitio público con el diseño original, panel admin con JWT y base de datos SQLite (Prisma).
+Sitio público con el diseño original, panel admin con JWT y base de datos PostgreSQL (Neon + Prisma).
 
 ## Arranque
 
@@ -27,7 +27,12 @@ Cámbiala en `.env` (`ADMIN_PASSWORD`) y vuelve a correr `npx prisma db seed` si
 - Correo y redes
 - Proyectos: añadir, destacar, ocultar o quitar
 
-## Scripts
+## Vercel
 
-- `npm run db:setup` — migraciones + seed
-- `npm run db:seed` — vuelve a cargar usuario y ajustes (no duplica proyectos)
+En Project Settings → Environment Variables (Production y Preview) define al menos:
+
+- `DATABASE_URL` — URL pooled de Neon (`…-pooler…`, `sslmode=require&pgbouncer=true`)
+- `DIRECT_URL` — URL directa de Neon (sin `-pooler`)
+- `JWT_SECRET`
+
+Luego vuelve a desplegar. El build corre `prisma generate` y `prisma migrate deploy`.
