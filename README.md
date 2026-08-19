@@ -29,10 +29,10 @@ Cámbiala en `.env` (`ADMIN_PASSWORD`) y vuelve a correr `npx prisma db seed` si
 
 ## Vercel
 
-En Project Settings → Environment Variables (Production y Preview) define al menos:
+En Project Settings → Environment Variables (Production y Preview) pega las mismas claves de `.env`:
 
-- `DATABASE_URL` — URL pooled de Neon (`…-pooler…`, `sslmode=require&pgbouncer=true`)
-- `DIRECT_URL` — URL directa de Neon (sin `-pooler`)
+- `DATABASE_URL`
+- `DIRECT_URL` (obligatoria para migraciones; si falta, el build usa `DATABASE_URL`)
 - `JWT_SECRET`
 
-Luego vuelve a desplegar. El build corre `prisma generate` y `prisma migrate deploy`.
+Marca Production y Preview, guarda y vuelve a desplegar.
