@@ -63,26 +63,26 @@ export default function ProjectsTable({ projects }: { projects: Project[] }) {
         <tbody>
           {projects.map((project) => (
             <tr key={project.id}>
-              <td>
+              <td data-label="Imagen">
                 <img src={project.image} alt="" className="admin-thumb" />
               </td>
-              <td>
+              <td data-label="Proyecto">
                 <strong>{project.title}</strong>
                 <div>
                   <small>{parseTags(project.tags).join(" · ")}</small>
                 </div>
               </td>
-              <td>
+              <td data-label="Destacado">
                 <span className={project.isFeatured ? "badge badge-on" : "badge badge-off"}>
                   {project.isFeatured ? "Sí" : "No"}
                 </span>
               </td>
-              <td>
+              <td data-label="Visible">
                 <span className={project.isVisible ? "badge badge-on" : "badge badge-off"}>
                   {project.isVisible ? "Visible" : "Oculto"}
                 </span>
               </td>
-              <td>
+              <td data-label="Acciones">
                 <div className="admin-row-actions">
                   <button
                     type="button"
